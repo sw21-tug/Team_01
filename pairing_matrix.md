@@ -16,11 +16,11 @@
 | Syntax      | Dev 1       | Dev 2       | Dev 3       | Dev 4       | Dev 5       | Dev 6       | Dev 7       | Dev 8       |
 | :---        |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |
 | Dev 1       | X           | 11:30       | 03:00       | 09:30       | HH:MM       | HH:MM       | 03:00       | HH:MM       |
-| Dev 2       | 11:30       | X           | HH:MM       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | 06:00       |
-| Dev 3       | 03:00       | HH:MM       | X           | 03:00       | HH:MM       | 09:30       | 09:45       | HH:MM       |
-| Dev 4       | 09:30       | HH:MM       | 03:00       | X           | HH:MM       | HH:MM       | 03:00       | 08:00       |
-| Dev 5       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | X           | 11:00       | 08:30       | HH:MM       |
-| Dev 6       | HH:MM       | HH:MM       | 09:30       | HH:MM       | 11:00       | X           | HH:MM       | HH:MM       |
-| Dev 7       | 03:00       | HH:MM       | 09:45       | HH:MM       | 08:30       | HH:MM       | X           | HH:MM       |
-| Dev 8       | HH:MM       | 06:00       | HH:MM       | 08:00       | HH:MM       | HH:MM       | HH:MM       | X           |
+| Dev 2       | 11:30       | X           | HH:MM       | HH:MM       | HH:MM       | 08:00       | HH:MM       | 12:00       |
+| Dev 3       | 03:00       | HH:MM       | X           | 07:00       | HH:MM       | 09:30       | 09:45       | 02:00       |
+| Dev 4       | 09:30       | 02:00       | 07:00       | X           | HH:MM       | HH:MM       | 03:00       | 08:00       |
+| Dev 5       | 06:00       | HH:MM       | HH:MM       | HH:MM       | X           | 11:00       | 08:30       | HH:MM       |
+| Dev 6       | HH:MM       | 08:00       | 09:30       | HH:MM       | 11:00       | X           | HH:MM       | HH:MM       |
+| Dev 7       | 03:00       | HH:MM       | 09:45       | HH:MM       | 08:30       | HH:MM       | X           | 04:00       |
+| Dev 8       | HH:MM       | 12:00       | 02:00       | 08:00       | HH:MM       | HH:MM       | 04:00       | X           |
 
