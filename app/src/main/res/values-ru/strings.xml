@@ -33,25 +33,37 @@
     <string name="additional_information">Дополнительная информация:</string>
     <string name="reviews_btn">Отзывы</string>
 
+    <string name="comment">Комментарий</string>
+    <string name="comments">Комментарии</string>
+    <string name="submit">Представлять на рассмотрение</string>
+    <string name="comment_hint">Напишите здесь свой комментарий.</string>
     <string name="menu_filter">Фильтр</string>
+    <string name="menu_filter_search">фильтр &amp; поиск</string>
+
     <string name="filter_btn">Фильтр</string>
     <string name="all_shops">Все магазины</string>
-    <string name="comment">Comment</string>
-    <string name="comments">Comments</string>
-    <string name="submit">Submit</string>
-    <string name="comment_hint">Please write your comment here.</string>
 
-    <string name="menu_filter_search">фильтр &amp; поиск</string>
     <string name="settings">Настройки</string>
-
     <string name="FirstLanguage">английский</string>
     <string name="SecondLanguage">русский</string>
     <string name="LanguageApplyButton">Применять</string>
     <string name="filter_result">Результат фильтра</string>
     <string name="search">Поиск:</string>
     <string name="empty_list">Кофе не обнаружен.</string>
-    <string name="contact">контакт</string>
-    <string name="Product_Owner">Владелец продукта</string>
+
     <string name="tel_nr">Телефон</string>
+    <string name="tel_nrPO">0660 9246052</string>
+    <string name="email">Адрес электронной почты</string>
+    <string name="po_name">Бурим Врелла</string>
+    <string name="Product_Owner">Владелец продукта</string>
+    <string name="contact">контакт</string>
+    <string name="name">Кофе-Имя</string>
+    <string name="shop">Магазин</string>
+    <string name="Quantity">Количество</string>
+    <string name="Additional_info">Дополнительная информация</string>
+    <string name="Add_coffee">Добавить кофе</string>
+    <string name="mandatory_field">Обязательное поле</string>
+
+
 
 </resources>
