@@ -18,7 +18,8 @@
             android:text="@string/mandatory_field"
             android:textAlignment="center"
             android:textColor="#CA0B0B"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/coffee_name"
