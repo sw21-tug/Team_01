@@ -5,12 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.scrollTo
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.ViewMatchers.withClassName
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
@@ -19,6 +17,7 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,38 +31,23 @@ class ViewLastCoffeeTest {
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun viewLastCoffeeTest() {
+    fun viewLastCoffeeTestNew() {
         val recyclerView = onView(
-            allOf(
-                withId(R.id.home_listview),
-                childAtPosition(
-                    withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
-                    0
-                )
-            )
-        )
+                allOf(withId(R.id.home_listview),
+                        childAtPosition(
+                                withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
+                                0)))
         recyclerView.perform(actionOnItemAtPosition<ViewHolder>(9, click()))
 
-        val appCompatImageView = onView(
-            allOf(
-                withId(R.id.img_coffee),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.ScrollView")),
-                        0
-                    ),
-                    0
-                )
-            )
-        )
-        appCompatImageView.perform(scrollTo(), click())
-
-        pressBack()
+        val textView = onView(
+                allOf(withId(R.id.lbl_additional_information), withText("Additional information:"),
+                        withParent(withParent(IsInstanceOf.instanceOf(android.widget.TableLayout::class.java))),
+                        isDisplayed()))
+        textView.check(matches(withText("Additional information:")))
     }
 
     private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
-    ): Matcher<View> {
+            parentMatcher: Matcher<View>, position: Int): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
