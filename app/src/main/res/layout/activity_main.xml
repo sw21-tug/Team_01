@@ -32,7 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/brand_logo"
-                app:layout_constraintBottom_toBottomOf="@+id/brand_logo_Constraintlayout" />
+                app:layout_constraintBottom_toBottomOf="@+id/brand_logo_Constraintlayout"
+                android:contentDescription="@string/brandlogo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.navigation.NavigationView>
