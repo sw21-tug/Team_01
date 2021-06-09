@@ -22,6 +22,7 @@
 
         <EditText
             android:id="@+id/coffee_name"
+            android:background="@drawable/edit_textbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -51,6 +52,7 @@
 
         <Spinner
             android:id="@+id/spinner_type"
+            android:background="@drawable/edit_textbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -64,6 +66,7 @@
 
         <EditText
             android:id="@+id/coffee_shop"
+            android:background="@drawable/edit_textbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -81,6 +84,7 @@
 
         <EditText
             android:id="@+id/coffee_price"
+            android:background="@drawable/edit_textbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -99,6 +103,7 @@
 
         <EditText
             android:id="@+id/coffee_qty"
+            android:background="@drawable/edit_textbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -141,6 +146,7 @@
 
         <EditText
             android:id="@+id/txt_additional_information"
+            android:background="@drawable/edit_textbox"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginLeft="10dp"
