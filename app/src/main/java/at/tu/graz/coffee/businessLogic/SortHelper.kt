@@ -9,7 +9,7 @@ class SortHelper {
             coffees: List<CoffeeWithReviews>
         ): List<CoffeeWithReviews> {
 
-            return coffees
+            return coffees.sortedByDescending { it.coffee.evaluationTotal }
         }
     }
 
