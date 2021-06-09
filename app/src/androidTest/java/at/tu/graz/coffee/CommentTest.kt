@@ -31,74 +31,62 @@ class CommentTest {
 
     @Test
     fun commentTest() {
+        val appCompatImageButton = onView(
+allOf(withContentDescription("Open navigation drawer"),
+childAtPosition(
+allOf(withId(R.id.toolbar),
+childAtPosition(
+withClassName(`is`("com.google.android.material.appbar.AppBarLayout")),
+0)),
+1),
+isDisplayed()))
+        appCompatImageButton.perform(click())
+        
         val recyclerView = onView(
-            allOf(
-                withId(R.id.home_listview),
-                childAtPosition(
-                    withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
-                    0
-                )
-            )
-        )
+allOf(withId(R.id.home_listview),
+childAtPosition(
+withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
+0)))
         recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
-
+        
         val materialButton = onView(
-            allOf(
-                withId(R.id.btn_comments), withText("Comments"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.ScrollView")),
-                        0
-                    ),
-                    3
-                )
-            )
-        )
+allOf(withId(R.id.btn_comments), withText("Comments"),
+childAtPosition(
+childAtPosition(
+withClassName(`is`("android.widget.ScrollView")),
+0),
+2)))
         materialButton.perform(scrollTo(), click())
-
+        
         val textInputEditText = onView(
-            allOf(
-                withId(R.id.comment_text_field),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("androidx.core.widget.NestedScrollView")),
-                        0
-                    ),
-                    7
-                ),
-                isDisplayed()
-            )
-        )
+allOf(withId(R.id.comment_text_field),
+childAtPosition(
+childAtPosition(
+withId(R.id.support_cardview),
+0),
+7),
+isDisplayed()))
         textInputEditText.perform(replaceText("Comment"), closeSoftKeyboard())
-
+        
         val materialButton2 = onView(
-            allOf(
-                withId(R.id.btn_comment_submit), withText("Submit"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("androidx.core.widget.NestedScrollView")),
-                        0
-                    ),
-                    8
-                ),
-                isDisplayed()
-            )
-        )
+allOf(withId(R.id.btn_comment_submit), withText("Submit"),
+childAtPosition(
+childAtPosition(
+withClassName(`is`("androidx.core.widget.NestedScrollView")),
+0),
+1),
+isDisplayed()))
         materialButton2.perform(click())
-
+        
         val textView = onView(
-            allOf(
-                withId(R.id.textView5), withText("Comment"),
-                withParent(withParent(withId(R.id.comment_listview))),
-                isDisplayed()
-            )
-        )
+allOf(withId(R.id.textView5), withText("Comment"),
+withParent(withParent(withId(R.id.support_cardview_Message))),
+isDisplayed()))
         textView.check(matches(withText("Comment")))
-    }
-
+        }
+    
     private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
-    ): Matcher<View> {
+            parentMatcher: Matcher<View>, position: Int): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
@@ -113,4 +101,4 @@ class CommentTest {
             }
         }
     }
-}
+    }
