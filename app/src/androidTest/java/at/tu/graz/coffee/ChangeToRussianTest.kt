@@ -33,7 +33,6 @@ class ChangeToRussianTest {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        Thread.sleep(250)
 
         val overflowMenuButton = onView(
             allOf(
@@ -53,7 +52,6 @@ class ChangeToRussianTest {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        Thread.sleep(250)
 
         val materialTextView = onView(
             allOf(
@@ -106,7 +104,6 @@ class ChangeToRussianTest {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        Thread.sleep(5000)
 
         val appCompatImageButton = onView(
             allOf(
@@ -145,7 +142,6 @@ class ChangeToRussianTest {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        Thread.sleep(5000)
 
         val materialRadioButton2 = onView(
             allOf(
