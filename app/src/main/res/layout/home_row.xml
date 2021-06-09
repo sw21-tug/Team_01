@@ -34,22 +34,16 @@
                 android:text="Name_of_Coffee"
                 android:textColor="@color/white"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textStyle="bold" />
 
 
             <ImageView
                 android:id="@+id/home_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-
                 android:layout_marginBottom="5dp"
                 android:background="@color/white"
                 android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_textView_name"
                 app:srcCompat="@drawable/spar_premium_caffe_crema" />
 
 
@@ -62,10 +56,7 @@
                 android:numStars="10"
                 android:progressTint="@color/golden"
                 android:rating="5"
-                android:stepSize="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_imageView" />
+                android:stepSize="0.5" />
 
             <TextView
                 android:id="@+id/home_textView_rating"
@@ -75,9 +66,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="Rating"
                 android:textAlignment="viewStart"
-                android:textColor="@color/golden"
-                app:layout_constraintEnd_toEndOf="@+id/home_ratingBar"
-                app:layout_constraintTop_toBottomOf="@+id/home_ratingBar" />
+                android:textColor="@color/golden" />
 
 
         </LinearLayout>
