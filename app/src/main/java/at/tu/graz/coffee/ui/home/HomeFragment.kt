@@ -36,7 +36,6 @@ class HomeFragment : Fragment() {
             val sortedCoffees = SortHelper.sortCoffee(coffees)
             sortedCoffees.let { adapter.submitList(it) }
         }
-
         return root
     }
 }
