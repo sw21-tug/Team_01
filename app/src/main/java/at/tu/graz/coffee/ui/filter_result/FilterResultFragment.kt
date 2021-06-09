@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.tu.graz.coffee.CoffeeApplication
 import at.tu.graz.coffee.R
+import at.tu.graz.coffee.businessLogic.SortHelper
 
 
 class FilterResultFragment : Fragment() {
@@ -44,7 +45,9 @@ class FilterResultFragment : Fragment() {
                 } else {
                     empty.visibility = GONE
                 }
-                coffees.let { adapter.submitList(it) }
+                coffees.forEach { it.calculateNewEvaluation() }
+                val sortedCoffees = SortHelper.sortCoffee(coffees)
+                sortedCoffees.let { adapter.submitList(it) }
             }
 
         return root
