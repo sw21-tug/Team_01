@@ -177,6 +177,7 @@
 
         <ImageButton
             android:id="@+id/button_addPicture"
+            android:background="@drawable/round_corner"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/outline_add_a_photo_white_24"
