@@ -30,59 +30,39 @@ class FilterBestCostTest {
     @Test
     fun filterBestCostTest() {
         val appCompatImageButton = onView(
-            allOf(
-                withContentDescription("Open navigation drawer"),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.toolbar),
-                        childAtPosition(
-                            withClassName(`is`("com.google.android.material.appbar.AppBarLayout")),
-                            0
-                        )
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
+allOf(withContentDescription("Open navigation drawer"),
+childAtPosition(
+allOf(withId(R.id.toolbar),
+childAtPosition(
+withClassName(`is`("com.google.android.material.appbar.AppBarLayout")),
+0)),
+1),
+isDisplayed()))
         appCompatImageButton.perform(click())
-
+        
         val navigationMenuItemView = onView(
-            allOf(
-                withId(R.id.nav_filter),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.design_navigation_view),
-                        childAtPosition(
-                            withId(R.id.nav_view),
-                            0
-                        )
-                    ),
-                    3
-                ),
-                isDisplayed()
-            )
-        )
+allOf(withId(R.id.nav_filter),
+childAtPosition(
+allOf(withId(R.id.design_navigation_view),
+childAtPosition(
+withId(R.id.nav_view),
+0)),
+3),
+isDisplayed()))
         navigationMenuItemView.perform(click())
-
+        
         val materialButton = onView(
-            allOf(
-                withId(R.id.btn_filter), withText("Filter"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.ScrollView")),
-                        0
-                    ),
-                    1
-                )
-            )
-        )
+allOf(withId(R.id.btn_filter), withText("Filter"),
+childAtPosition(
+childAtPosition(
+withClassName(`is`("androidx.cardview.widget.CardView")),
+0),
+1)))
         materialButton.perform(scrollTo(), click())
-    }
-
+        }
+    
     private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
-    ): Matcher<View> {
+            parentMatcher: Matcher<View>, position: Int): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
@@ -97,4 +77,4 @@ class FilterBestCostTest {
             }
         }
     }
-}
+    }
