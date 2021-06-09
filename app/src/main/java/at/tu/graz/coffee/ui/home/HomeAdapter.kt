@@ -22,7 +22,6 @@ class HomeAdapter : ListAdapter<CoffeeWithReviews, HomeAdapter.HomeViewHolder>(C
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val current = getItem(position)
-        current.calculateNewEvaluation()
         holder.bind(current.coffee)
     }
 

@@ -9,6 +9,7 @@ import at.tu.graz.coffee.R
 import at.tu.graz.coffee.businessLogic.EmailSender
 import kotlinx.android.synthetic.main.fragment_support.*
 import android.widget.Toast
+
 class SupportViewFragment : Fragment() {
 
     override fun onCreateView(
@@ -25,17 +26,17 @@ class SupportViewFragment : Fragment() {
         btn_sendEmail?.setOnClickListener {
             val id: Int = radio_group.checkedRadioButtonId
 
-            var emailToSend = "john.tusha@student.tugraz.at"
-            if (id == rdbtn_Owner.id) {
-                emailToSend = "burimvrella@gmail.com"
+            val emailToSend = if (id == rdbtn_Owner.id) {
+                "smartcoffeehelp@gmail.com"
+            } else {
+                "smartcoffeehelp@gmail.com"
             }
 
-            val sender = EmailSender()
-            sender.execute(emailToSend, txt_supportMsg.text.toString())
+            EmailSender().execute(emailToSend, txt_supportMsg.text.toString())
 
             txt_supportMsg.text.clear()
 
-            Toast.makeText(activity,R.string.emailConfirm,Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, R.string.emailConfirm, Toast.LENGTH_SHORT).show()
         }
     }
 }
