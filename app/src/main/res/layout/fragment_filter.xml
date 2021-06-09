@@ -1,138 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="5dp">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TableLayout
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/cardview_light_background"
+            app:cardBackgroundColor="@color/dark_brown"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:contentPadding="0dp">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginVertical="15dp"
-                android:layout_marginHorizontal="30dp"
-                android:textAlignment="center">
+                android:orientation="vertical">
 
-                <TableRow android:layout_marginTop="10dp">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="15dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:textAlignment="center">
 
-                    <TextView
-                        android:id="@+id/lbl_search"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/search"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
+                    <TableRow android:layout_marginTop="10dp">
 
-                    <EditText
-                        android:id="@+id/input_field"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/lbl_search"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/search"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
 
-                <TableRow android:layout_marginTop="10dp">
+                        <EditText
+                            android:id="@+id/input_field"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/lbl_total_rating"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/total"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
+                    <TableRow android:layout_marginTop="10dp">
 
-                    <com.google.android.material.slider.RangeSlider
-                        android:id="@+id/slider_total"
-                        android:layout_weight="2"
-                        android:stepSize="1"
-                        android:valueFrom="0"
-                        android:valueTo="10" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/lbl_total_rating"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/total"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
 
-                <TableRow>
-                    <TextView
-                        android:id="@+id/lbl_taste_rating"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/taste"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
+                        <com.google.android.material.slider.RangeSlider
+                            android:id="@+id/slider_total"
+                            android:layout_weight="2"
+                            android:stepSize="1"
+                            android:valueFrom="0"
+                            android:valueTo="10" />
+                    </TableRow>
 
-                    <com.google.android.material.slider.RangeSlider
-                        android:id="@+id/slider_taste"
-                        android:layout_weight="2"
-                        android:stepSize="1"
-                        android:valueFrom="0"
-                        android:valueTo="10" />
-                </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/lbl_taste_rating"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/taste"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
 
-                <TableRow>
-                    <TextView
-                        android:id="@+id/lbl_cost_rating"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/cost"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
+                        <com.google.android.material.slider.RangeSlider
+                            android:id="@+id/slider_taste"
+                            android:layout_weight="2"
+                            android:stepSize="1"
+                            android:valueFrom="0"
+                            android:valueTo="10" />
+                    </TableRow>
 
-                    <com.google.android.material.slider.RangeSlider
-                        android:id="@+id/slider_cost"
-                        android:layout_weight="2"
-                        android:stepSize="1"
-                        android:valueFrom="0"
-                        android:valueTo="10" />
-                </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/lbl_cost_rating"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/cost"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
 
-                <TableRow>
-                    <TextView
-                        android:id="@+id/lbl_availability_rating"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/availability"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
+                        <com.google.android.material.slider.RangeSlider
+                            android:id="@+id/slider_cost"
+                            android:layout_weight="2"
+                            android:stepSize="1"
+                            android:valueFrom="0"
+                            android:valueTo="10" />
+                    </TableRow>
 
-                    <com.google.android.material.slider.RangeSlider
-                        android:id="@+id/slider_availability"
-                        android:layout_weight="2"
-                        android:stepSize="1"
-                        android:valueFrom="0"
-                        android:valueTo="10" />
-                </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/lbl_availability_rating"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/availability"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
 
-                <TableRow>
-                    <TextView
-                        android:id="@+id/lbl_store_to_buy_from"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/available_at"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
+                        <com.google.android.material.slider.RangeSlider
+                            android:id="@+id/slider_availability"
+                            android:layout_weight="2"
+                            android:stepSize="1"
+                            android:valueFrom="0"
+                            android:valueTo="10" />
+                    </TableRow>
 
-                    <Spinner
-                        android:id="@+id/spinner_available_at"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content" />
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/lbl_store_to_buy_from"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/available_at"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
 
-                </TableRow>
+                        <Spinner
+                            android:id="@+id/spinner_available_at"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content" />
 
-            </TableLayout>
+                    </TableRow>
 
-            <Button
-                android:id="@+id/btn_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
-                android:text="@string/filter_btn"
-                android:background="@color/normal_gray"
-                android:textColor="@color/black"/>
-        </LinearLayout>
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/btn_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/filter_btn"
+                    android:background="@drawable/round_corner"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
 </FrameLayout>

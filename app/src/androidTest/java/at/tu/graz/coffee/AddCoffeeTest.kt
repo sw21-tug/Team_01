@@ -56,14 +56,14 @@ class AddCoffeeTest {
             allOf(withId(R.id.coffee_name),
                 childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("android.widget.TableLayout")),
+                        withClassName(`is`("android.widget.ScrollView")),
                         0),
                     1)))
         appCompatEditText.perform(scrollTo(), replaceText("coffee"), closeSoftKeyboard())
 
         val editText = onView(
             allOf(withId(R.id.coffee_name), withText("coffee"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.TableLayout::class.java))),
+                withParent(withParent(IsInstanceOf.instanceOf(android.widget.ScrollView::class.java))),
                 isDisplayed()))
         editText.check(matches(withText("coffee")))
 
@@ -71,14 +71,14 @@ class AddCoffeeTest {
             allOf(withId(R.id.coffee_qty),
                 childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("android.widget.TableLayout")),
-                        4),
-                    1)))
+                        withClassName(`is`("android.widget.ScrollView")),
+                        0),
+                    6)))
         appCompatEditText2.perform(scrollTo(), replaceText("5"), closeSoftKeyboard())
 
         val editText2 = onView(
             allOf(withId(R.id.coffee_qty), withText("5"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.TableLayout::class.java))),
+                withParent(withParent(IsInstanceOf.instanceOf(android.widget.ScrollView::class.java))),
                 isDisplayed()))
         editText2.check(matches(withText("5")))
 
@@ -88,7 +88,7 @@ class AddCoffeeTest {
                     childAtPosition(
                         withClassName(`is`("android.widget.ScrollView")),
                         0),
-                    2)))
+                    12)))
         materialButton.perform(scrollTo(), click())
 
         val textView = onView(
