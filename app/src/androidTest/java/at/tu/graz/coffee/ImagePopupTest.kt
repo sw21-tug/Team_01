@@ -49,10 +49,10 @@ class ImagePopupTest {
                 withId(R.id.img_coffee),
                 childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("android.widget.ScrollView")),
+                        withClassName(`is`("androidx.cardview.widget.CardView")),
                         0
                     ),
-                    0
+                    1
                 )
             )
         )
