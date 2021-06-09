@@ -63,4 +63,8 @@
     <string name="robusta">Robusta</string>
     <string name="mixed">Mixed</string>
     <string name="brandlogo">BrandLogo</string>
+    <string name="homedivider">HomeDivider</string>
+    <string name="name_of_coffee">Name_of_Coffee</string>
+    <string name="rating">Rating</string>
+    <string name="homeimageview">HomeImageView</string>
 </resources>

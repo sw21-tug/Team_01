@@ -61,4 +61,8 @@
     <string name="robusta">Robusta</string>
     <string name="mixed">Vegyes</string>
     <string name="brandlogo">MárkaLogó</string>
+    <string name="homedivider">OtthoniElválasztó</string>
+    <string name="name_of_coffee">A_Kávé_Neve</string>
+    <string name="rating">Értékelés</string>
+    <string name="homeimageview">OtthoniKépNézet</string>
 </resources>
