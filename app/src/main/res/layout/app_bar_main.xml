@@ -2,24 +2,31 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/HomeBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_brown"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        style="@style/Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.AppCompat.DayNight">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            style="@style/Title"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:popupTheme="@style/Theme.Coffee.PopupOverlay" />
+            android:background="@color/dark_brown"
+            app:popupTheme="@style/Theme.Coffee.PopupOverlay"
+            app:titleTextColor="@color/gray" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        layout="@layout/content_main"
+        android:background="#FFFFFF" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

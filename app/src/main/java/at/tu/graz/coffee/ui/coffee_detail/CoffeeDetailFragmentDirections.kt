@@ -6,18 +6,18 @@ import at.tu.graz.coffee.R
 
 class CoffeeDetailFragmentDirections private constructor() {
     private data class ActionOpenDetails(
-        public val coffeeId: Int = -1
+        val coffeeId: Int = -1
     ) : NavDirections {
-        public override fun getActionId(): Int = R.id.commentFragment
+        override fun getActionId(): Int = R.id.commentFragment
 
-        public override fun getArguments(): Bundle {
+        override fun getArguments(): Bundle {
             val result = Bundle()
             result.putInt("coffeeId", this.coffeeId)
             return result
         }
     }
 
-    public companion object {
-        public fun actionOpenDetails(coffeeId: Int = -1): NavDirections = ActionOpenDetails(coffeeId)
+    companion object {
+        fun actionOpenDetails(coffeeId: Int = -1): NavDirections = ActionOpenDetails(coffeeId)
     }
 }

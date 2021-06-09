@@ -9,24 +9,25 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import at.tu.graz.coffee.CoffeeApplication
 import at.tu.graz.coffee.R
-import at.tu.graz.coffee.model.CoffeeData
+import at.tu.graz.coffee.businessLogic.FilterHelper.Companion.filterCoffee
 import com.google.android.material.slider.RangeSlider
 
 
 class FilterFragment : Fragment() {
 
-    private lateinit var filterViewModel: FilterViewModel
+    private val filterViewModel: FilterViewModel by viewModels {
+        FilterViewModelFactory((requireActivity().application as CoffeeApplication).coffeeRepository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        filterViewModel =
-            ViewModelProvider(this).get(FilterViewModel::class.java)
         return inflater.inflate(R.layout.fragment_filter, container, false)
     }
 
@@ -44,12 +45,14 @@ class FilterFragment : Fragment() {
         sliderAvailability.setValues(0f, 10f)
 
         val dropdownAvailableAt: Spinner = view.findViewById(R.id.spinner_available_at)
-        val coffeeStores = CoffeeData.getStoresOfAllCoffees()
 
-        coffeeStores.add(0, getString(R.string.all_shops))
+        filterViewModel.getStoresOfAllCoffees().observe(requireActivity()) {coffeeStoreNames ->
+            val mutableCoffeeStoreNames = coffeeStoreNames as MutableList<String>
+            mutableCoffeeStoreNames.add(0, getString(R.string.all_shops))
 
-        dropdownAvailableAt.adapter = activity?.applicationContext?.let {
-            ArrayAdapter(it, android.R.layout.simple_list_item_1, coffeeStores)
+            dropdownAvailableAt.adapter = activity?.applicationContext?.let {
+                ArrayAdapter(it, android.R.layout.simple_list_item_1, mutableCoffeeStoreNames)
+            }
         }
 
         val filterButton: Button = view.findViewById(R.id.btn_filter)
@@ -62,15 +65,20 @@ class FilterFragment : Fragment() {
 
             var selectedStore = dropdownAvailableAt.selectedItem as String
 
-            if(selectedStore == getString(R.string.all_shops)) {
+            if (selectedStore == getString(R.string.all_shops)) {
                 selectedStore = ""
             }
 
-            val filteredCoffees = CoffeeData.filterCoffee(rangeTotal, rangeTaste, rangeCost,
-                rangeAvailability, selectedStore, searchText)
+            filterViewModel.allCoffees.observe(requireActivity()) { allCoffees ->
+                val ids = filterCoffee(
+                    allCoffees, rangeTotal, rangeTaste, rangeCost,
+                    rangeAvailability, selectedStore, searchText
+                )
 
-            val action = FilterFragmentDirections.actionOpenFilterResult(filteredCoffees.toIntArray())
-            Navigation.findNavController(view).navigate(action)
+                val action =
+                    FilterFragmentDirections.actionOpenFilterResult(ids.toIntArray())
+                Navigation.findNavController(view).navigate(action)
+            }
         }
     }
 }

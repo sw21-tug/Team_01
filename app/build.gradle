@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -16,6 +17,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
     }
 
     buildTypes {
@@ -52,16 +57,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation 'androidx.test:rules:1.3.0-beta01'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
     apply plugin: 'kotlin-android-extensions'
     implementation 'com.sun.mail:android-mail:1.6.2'
     implementation 'com.sun.mail:android-activation:1.6.2'
 
     // Espresso
-// Core library
+    // Core library
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.fragment:fragment:1.3.3'
     debugImplementation 'androidx.fragment:fragment-testing:1.3.3'
-// AndroidJUnitRunner and JUnit Rules
+    // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
 
@@ -73,5 +79,35 @@ dependencies {
 
     //Rangeslider
     implementation 'com.google.android.material:material:1.3.0'
+
+    //Room Database
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+    // Required -- JUnit 4 framework
+    testImplementation 'junit:junit:4.13.1'
+
+    testImplementation 'androidx.test:core-ktx:1.3.0'
+    testImplementation 'androidx.test.ext:junit-ktx:1.1.2'
+
+    // Robolectric environment
+    testImplementation 'org.robolectric:robolectric:4.4'
+
+    // Optional -- truth
+    testImplementation 'androidx.test.ext:truth:1.3.0'
+    testImplementation 'com.google.truth:truth:1.0'
+
+    // Optional -- Mockito framework
+    testImplementation 'org.mockito:mockito-core:3.3.3'
+
+    //Image-viewer
+    implementation 'com.facebook.fresco:fresco:2.4.0'
+    implementation 'com.github.stfalcon:frescoimageviewer:0.5.0'
+
+    // Testing
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.0-M1"
 
 }

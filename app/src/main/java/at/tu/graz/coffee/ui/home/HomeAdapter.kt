@@ -1,66 +1,76 @@
 package at.tu.graz.coffee.ui.home
 
-import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.navigation.Navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import at.tu.graz.coffee.R
 import at.tu.graz.coffee.model.Coffee
+import at.tu.graz.coffee.model.CoffeeWithReviews
 
 
-class HomeAdapter(context: Context, coffeeList:List<Coffee>): BaseAdapter() {
-    private val mContext: Context = context
-    private val mCoffeeList: List<Coffee> = coffeeList
+class HomeAdapter : ListAdapter<CoffeeWithReviews, HomeAdapter.HomeViewHolder>(COFFEE_COMPARATOR) {
 
-    override fun getCount(): Int {
-        return mCoffeeList.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
+        return HomeViewHolder.create(parent)
     }
 
-    override fun getItem(p0: Int): Any {
-        return mCoffeeList[p0]
+    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+        val current = getItem(position)
+        holder.bind(current.coffee)
     }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
+    class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val nameTextView = itemView.findViewById<TextView>(R.id.home_textView_name)
+        private val ratingTextView = itemView.findViewById<TextView>(R.id.home_textView_rating)
+        private val imageView = itemView.findViewById<ImageView>(R.id.home_imageView)
+        private val ratingBar = itemView.findViewById<RatingBar>(R.id.home_ratingBar)
 
-    override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup): View {
-        val homeRow: View
-        if (convertView == null) {
-            val layoutInflater = LayoutInflater.from(mContext)
-            homeRow = layoutInflater.inflate(R.layout.home_row, viewGroup, false)
-            val nameTextView = homeRow.findViewById<TextView>(R.id.home_textView_name)
-            val ratingTextView = homeRow.findViewById<TextView>(R.id.home_textView_rating)
-            val imageView = homeRow.findViewById<ImageView>(R.id.home_imageView)
-            val ratingBar = homeRow.findViewById<RatingBar>(R.id.home_ratingBar)
-            val viewholder = ViewHolderPattern(nameTextView, ratingTextView, imageView, ratingBar)
-            homeRow.tag = viewholder
-        } else {
-            homeRow = convertView
+        fun bind(coffee: Coffee) {
+            itemView.setOnClickListener {
+                val action = HomeFragmentDirections.actionOpenDetails(coffee.coffeeId)
+                findNavController(itemView).navigate(action)
+            }
+
+            nameTextView.text = coffee.name
+            ratingTextView.text = String.format("%.1f", coffee.evaluationTotal)
+
+            val imageRes = itemView.resources.getIdentifier(coffee.image, "drawable",
+                itemView.context.packageName)
+
+            if(imageRes != 0) {
+                imageView.setImageResource(imageRes)
+            } else {
+                val uri = Uri.parse(coffee.image)
+                imageView.setImageURI(uri)
+            }
+
+            ratingBar.rating = coffee.evaluationTotal.toFloat()
         }
 
-        homeRow.setOnClickListener {
-            val action = HomeFragmentDirections.actionOpenDetails(mCoffeeList[position].id)
-            findNavController(viewGroup).navigate(action)
+        companion object {
+            fun create(parent: ViewGroup): HomeViewHolder {
+                val view: View = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.home_row, parent, false)
+                return HomeViewHolder(view)
+            }
         }
-
-        val viewholder = homeRow.tag as ViewHolderPattern
-        viewholder.nameTextView.text = mCoffeeList[position].name
-
-        viewholder.ratingTextView.text = mCoffeeList[position].evaluationTotal.toString()
-
-        viewholder.imageView.setImageResource(mContext.resources.getIdentifier(mCoffeeList[position].image,
-            "drawable", mContext.packageName))
-
-        viewholder.ratingBar.rating = mCoffeeList[position].evaluationTotal.toFloat()
-        return homeRow
     }
 
-    private class ViewHolderPattern(val nameTextView: TextView, val ratingTextView: TextView,
-                                    val imageView: ImageView, val ratingBar: RatingBar)
+    companion object {
+        private val COFFEE_COMPARATOR = object : DiffUtil.ItemCallback<CoffeeWithReviews>() {
+            override fun areItemsTheSame(oldItem: CoffeeWithReviews, newItem: CoffeeWithReviews): Boolean {
+                return oldItem === newItem
+            }
+
+            override fun areContentsTheSame(oldItem: CoffeeWithReviews, newItem: CoffeeWithReviews): Boolean {
+                return oldItem.coffee.coffeeId == newItem.coffee.coffeeId
+            }
+        }
+    }
 }

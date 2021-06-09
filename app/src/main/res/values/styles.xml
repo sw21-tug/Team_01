@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Title">
+        <item name="android:textColor">?android:colorSecondary</item>
+        <item name="android:background">?android:colorPrimary</item>
+        <item name="android:textStyle"></item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+
+    <style name="HomeBackground">
+        <item name="android:textColor">?android:colorSecondary</item>
+        <item name="android:background">?android:colorPrimary</item>
+    </style>
+
+</resources>

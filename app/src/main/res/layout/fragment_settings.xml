@@ -5,56 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <RadioGroup
+        android:id="@+id/radio_group_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-
         <RadioButton
-            android:id="@+id/language_first_radio"
+            android:id="@+id/radio_btn_english"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
             android:text="@string/FirstLanguage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/black"/>
 
         <RadioButton
-            android:id="@+id/language_second_radio"
+            android:id="@+id/radio_btn_russian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:text="@string/SecondLanguage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/language_first_radio"
-            app:layout_constraintVertical_bias="0.006" />
+            app:layout_constraintTop_toBottomOf="@+id/radio_btn_english"
+            app:layout_constraintVertical_bias="0.006"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/radio_btn_albanian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="@string/ThirdLanguage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_btn_russian"
+            app:layout_constraintVertical_bias="0.006"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/radio_btn_hungarian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="@string/hungarian"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_btn_albanian"
+            app:layout_constraintVertical_bias="0.006"
+            android:textColor="@color/black"/>
+
+
 
     </RadioGroup>
-
-
-
-
-
-
 
     <Button
         android:id="@+id/settings_apply_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClickApplyButton"
         android:text="@string/LanguageApplyButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.294" />
-
+        app:layout_constraintTop_toTopOf="@+id/radio_group_language"
+        app:layout_constraintVertical_bias="0.396"
+        android:textColor="@color/black"
+        android:background="@color/normal_gray"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

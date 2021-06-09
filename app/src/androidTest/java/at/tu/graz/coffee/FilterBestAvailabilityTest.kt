@@ -4,7 +4,8 @@ package at.tu.graz.coffee
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
@@ -20,14 +21,14 @@ import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class SupportTestSendEmail {
+class FilterBestAvailabilityTest {
 
     @Rule
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun supportTestSendEmail() {
+    fun filterBestAvailabilityTest() {
         val appCompatImageButton = onView(
 allOf(withContentDescription("Open navigation drawer"),
 childAtPosition(
@@ -40,35 +41,24 @@ isDisplayed()))
         appCompatImageButton.perform(click())
         
         val navigationMenuItemView = onView(
-allOf(withId(R.id.nav_support),
+allOf(withId(R.id.nav_filter),
 childAtPosition(
 allOf(withId(R.id.design_navigation_view),
 childAtPosition(
 withId(R.id.nav_view),
 0)),
-4),
+3),
 isDisplayed()))
         navigationMenuItemView.perform(click())
         
-        val appCompatEditText = onView(
-allOf(withId(R.id.txt_supportMsg),
-childAtPosition(
-childAtPosition(
-withId(R.id.nav_host_fragment),
-0),
-1),
-isDisplayed()))
-        appCompatEditText.perform(replaceText("test"), closeSoftKeyboard())
-        
         val materialButton = onView(
-allOf(withId(R.id.btn_sendEmail), withText("Send Message"),
+allOf(withId(R.id.btn_filter), withText("Filter"),
 childAtPosition(
 childAtPosition(
-withId(R.id.nav_host_fragment),
+withClassName(`is`("androidx.cardview.widget.CardView")),
 0),
-3),
-isDisplayed()))
-        materialButton.perform(click())
+1)))
+        materialButton.perform(scrollTo(), click())
         }
     
     private fun childAtPosition(

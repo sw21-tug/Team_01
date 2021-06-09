@@ -1,70 +1,23 @@
 package at.tu.graz.coffee.model
 
-data class Coffee(
-    val id: Int,
-    val name: String,
-    val price: Double,
-    val storeToBuyFrom: String,
-    val coffeeType: CoffeeType,
-    val quantity: Double = -1.0,
-    val strength: Int = -1,
-    val additionalInformation: String = "",
-    val image: String
-) {
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "coffee")
+data class Coffee(
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "price") var price: Double,
+    @ColumnInfo(name = "store_to_buy_from") var storeToBuyFrom: String,
+    @ColumnInfo(name = "coffee_type") var coffeeType: CoffeeType,
+    @ColumnInfo(name = "quantity") var quantity: Double = -1.0,
+    @ColumnInfo(name = "strength") var strength: Int = -1,
+    @ColumnInfo(name = "additional_information") var additionalInformation: String = "",
+    @ColumnInfo(name = "image") var image: String
+) {
+    @PrimaryKey(autoGenerate = true) var coffeeId: Int = 0
     var evaluationTotal: Double = 0.0
     var evaluationTaste: Double = 0.0
     var evaluationCost: Double = 0.0
     var evaluationAvailability: Double = 0.0
-
-    var reviews: MutableList<Review> = mutableListOf()
-
-    fun addReview(review: Review) {
-        reviews.add(review)
-        calculateNewEvaluation()
-    }
-
-    constructor(
-        id: Int,
-        name: String,
-        price: Double,
-        storeToBuyFrom: String,
-        coffeeType: CoffeeType,
-        quantity: Double = -1.0,
-        strength: Int = -1,
-        additionalInformation: String = "",
-        image: String,
-        reviews: MutableList<Review>
-    ) : this(
-        id,
-        name,
-        price,
-        storeToBuyFrom,
-        coffeeType,
-        quantity,
-        strength,
-        additionalInformation,
-        image
-    ) {
-        this.reviews = reviews
-        calculateNewEvaluation()
-    }
-
-    fun calculateNewEvaluation() {
-        evaluationTaste = 0.0
-        evaluationCost = 0.0
-        evaluationAvailability = 0.0
-
-        for (review in reviews) {
-            evaluationTaste += review.taste
-            evaluationCost += review.cost
-            evaluationAvailability += review.availability
-        }
-
-        evaluationTaste /= reviews.size
-        evaluationCost /= reviews.size
-        evaluationAvailability /= reviews.size
-
-        evaluationTotal = (evaluationTaste + evaluationCost + evaluationAvailability) / 3.0
-    }
 }

@@ -1,13 +1,23 @@
 package at.tu.graz.coffee.ui.filter
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import at.tu.graz.coffee.database.CoffeeRepository
+import at.tu.graz.coffee.model.CoffeeWithReviews
 
-class FilterViewModel : ViewModel() {
+class FilterViewModel(private val repository: CoffeeRepository) : ViewModel() {
+    val allCoffees: LiveData<List<CoffeeWithReviews>> = repository.allCoffees.asLiveData()
 
-    private val _text = MutableLiveData<String>().apply {
-
+    fun getStoresOfAllCoffees(): LiveData<List<String>> {
+        return repository.getStoresOfAllCoffees().asLiveData()
     }
-    val text: LiveData<String> = _text
+}
+
+class FilterViewModelFactory(private val repository: CoffeeRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(FilterViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return FilterViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

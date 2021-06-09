@@ -1,14 +1,23 @@
 package at.tu.graz.coffee.ui.coffee_detail
 
-import androidx.lifecycle.ViewModel
-import at.tu.graz.coffee.model.Coffee
-import at.tu.graz.coffee.model.CoffeeData
-import at.tu.graz.coffee.model.CoffeeType
-import at.tu.graz.coffee.model.Review
+import androidx.lifecycle.*
+import at.tu.graz.coffee.database.CoffeeRepository
+import at.tu.graz.coffee.model.*
 
-class CoffeeDetailViewModel : ViewModel() {
 
-    fun getCoffee(id: Int): Coffee? {
-        return CoffeeData.getCoffee(id)
+class CoffeeDetailViewModel(private val repository: CoffeeRepository) : ViewModel() {
+
+    fun getCoffee(id: Int): LiveData<CoffeeWithReviews> {
+        return repository.getCoffee(id).asLiveData()
+    }
+}
+
+class CoffeeDetailViewModelFactory(private val repository: CoffeeRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(CoffeeDetailViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return CoffeeDetailViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

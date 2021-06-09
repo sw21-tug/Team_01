@@ -19,6 +19,24 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"
+        app:itemTextColor="@color/normal_brown">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/brand_logo_Constraintlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/brand_logo_imageview"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/brand_logo"
+                app:layout_constraintBottom_toBottomOf="@+id/brand_logo_Constraintlayout"
+                android:contentDescription="@string/brandlogo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.navigation.NavigationView>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

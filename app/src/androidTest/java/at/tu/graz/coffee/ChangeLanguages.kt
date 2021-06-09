@@ -60,7 +60,7 @@ class ChangeLanguages {
 
         val materialRadioButton = onView(
             allOf(
-                withId(R.id.language_second_radio), withText("Russian"),
+                withId(R.id.radio_btn_russian), withText("Russian"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
@@ -120,7 +120,7 @@ class ChangeLanguages {
 
         val materialRadioButton2 = onView(
             allOf(
-                withId(R.id.language_first_radio), withText("английский"),
+                withId(R.id.radio_btn_english), withText("английский"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),

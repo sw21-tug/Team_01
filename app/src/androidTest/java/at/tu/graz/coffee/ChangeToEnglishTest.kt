@@ -59,7 +59,7 @@ class ChangeToEnglishTest {
         materialTextView.perform(click())
 
         val materialRadioButton = onView(
-                allOf(withId(R.id.language_first_radio), withText("English"),
+                allOf(withId(R.id.radio_btn_english), withText("English"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),

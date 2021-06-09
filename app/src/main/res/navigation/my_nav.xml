@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/commentFragment2">
+    <fragment
+        android:id="@+id/commentFragment2"
+        android:name="at.tu.graz.coffee.ui.comment.CommentFragment"
+        android:label="CommentFragment" >
+        <action
+            android:id="@+id/action_commentFragment2_to_commentFragment3"
+            app:destination="@id/commentFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment3"
+        android:name="at.tu.graz.coffee.ui.comment.CommentFragment"
+        android:label="CommentFragment" >
+        <action
+            android:id="@+id/action_commentFragment3_to_commentFragment2"
+            app:destination="@id/commentFragment2" />
+    </fragment>
+</navigation>
