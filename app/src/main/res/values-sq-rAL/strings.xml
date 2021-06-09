@@ -59,5 +59,6 @@
     <string name="arabica">Arabica</string>
     <string name="robusta">Robusta</string>
     <string name="mixed">Të përziera</string>
+    <string name="brandlogo">LogoEMarkës</string>
 
 </resources>

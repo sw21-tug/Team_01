@@ -62,4 +62,5 @@
     <string name="arabica">Arabica</string>
     <string name="robusta">Robusta</string>
     <string name="mixed">Mixed</string>
+    <string name="brandlogo">BrandLogo</string>
 </resources>
