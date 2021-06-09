@@ -1,9 +1,7 @@
 package at.tu.graz.coffee.businessLogic
 
-import at.tu.graz.coffee.businessLogic.FilterHelper.Companion.checkReviews
 import at.tu.graz.coffee.businessLogic.SortHelper.Companion.sortCoffee
 import at.tu.graz.coffee.model.Coffee
-import at.tu.graz.coffee.model.CoffeeType
 import at.tu.graz.coffee.model.CoffeeType.*
 import at.tu.graz.coffee.model.CoffeeWithReviews
 import at.tu.graz.coffee.model.Review
