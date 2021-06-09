@@ -1,8 +1,7 @@
-package at.tu.graz.coffee.controller
+package at.tu.graz.coffee.database
 
 import androidx.room.*
 import at.tu.graz.coffee.model.Review
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ReviewDAO {
@@ -14,4 +13,7 @@ interface ReviewDAO {
 
     @Delete
     fun delete(reviews: Review)
+
+    @Query("DELETE FROM review")
+    fun purgeTable()
 }

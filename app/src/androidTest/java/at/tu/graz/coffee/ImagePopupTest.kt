@@ -3,19 +3,22 @@ package at.tu.graz.coffee
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.test.espresso.Espresso.onData
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.scrollTo
-import androidx.test.espresso.matcher.ViewMatchers.withClassName
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.*
+import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,18 +33,16 @@ class ImagePopupTest {
 
     @Test
     fun imagePopupTest() {
-        val constraintLayout = onData(anything())
-            .inAdapterView(
-                allOf(
-                    withId(R.id.home_listview),
-                    childAtPosition(
-                        withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
-                        0
-                    )
+        val recyclerView = onView(
+            allOf(
+                withId(R.id.home_listview),
+                childAtPosition(
+                    withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
+                    0
                 )
             )
-            .atPosition(0)
-        constraintLayout.perform(click())
+        )
+        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
 
         val appCompatImageView = onView(
             allOf(
@@ -56,6 +57,20 @@ class ImagePopupTest {
             )
         )
         appCompatImageView.perform(scrollTo(), click())
+
+        val view = onView(
+            allOf(
+                withId(R.id.backgroundView),
+                withParent(
+                    allOf(
+                        withId(R.id.container),
+                        withParent(IsInstanceOf.instanceOf(android.widget.RelativeLayout::class.java))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        view.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(

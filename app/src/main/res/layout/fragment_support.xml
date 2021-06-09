@@ -23,13 +23,15 @@
                 android:layout_width="141dp"
                 android:layout_height="58dp"
                 android:id="@+id/rdbtn_Owner"
-                android:checked="true" />
+                android:checked="true"
+                android:textColor="@color/black"/>
 
         <RadioButton
                 android:text="@string/menu_support"
                 android:layout_width="214dp"
                 android:layout_height="58dp"
-                android:id="@+id/rdbtn_Support" />
+                android:id="@+id/rdbtn_Support"
+                android:textColor="@color/black"/>
 
     </RadioGroup>
 
@@ -69,7 +71,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="0.061"
-            app:layout_constraintVertical_bias="0.954" />
+            app:layout_constraintVertical_bias="0.954"
+            android:background="@color/normal_gray"
+            android:textColor="@color/black"/>
 
     <TextView
             android:text="@string/contact"

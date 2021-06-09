@@ -10,23 +10,17 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import at.tu.graz.coffee.MainActivity
 import at.tu.graz.coffee.R
-import at.tu.graz.coffee.ui.home.SettingsViewModel
 import java.util.*
 
 class SettingsFragment : Fragment() {
-
-    private lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        settingsViewModel =
-            ViewModelProvider(this).get(SettingsViewModel::class.java)
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
@@ -34,28 +28,33 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val radioGroupLanguage: RadioGroup = view.findViewById(R.id.radio_group_language)
-        val radioBtnEnglish: RadioButton = view.findViewById(R.id.radio_btn_english)
         val radioBtnRussian: RadioButton = view.findViewById(R.id.radio_btn_russian)
+        val radioBtnHungarian: RadioButton = view.findViewById(R.id.radio_btn_hungarian)
         val radioBtnAlbanian: RadioButton = view.findViewById(R.id.radio_btn_albanian)
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        val savedLanguage = sharedPref!!.getString(getString(R.string.saved_language), "en")
 
-        when (savedLanguage) {
+        when (sharedPref!!.getString(getString(R.string.saved_language), "en")) {
             "en" -> radioGroupLanguage.check(R.id.radio_btn_english)
             "ru" -> radioGroupLanguage.check(R.id.radio_btn_russian)
+            "hu" -> radioGroupLanguage.check(R.id.radio_btn_hungarian)
             "sq" -> radioGroupLanguage.check(R.id.radio_btn_albanian)
         }
 
         val applyButton = view.findViewById<Button>(R.id.settings_apply_button)
         applyButton.setOnClickListener {
             var language = "en"
-            if (radioBtnRussian.isChecked) {
-                language = "ru"
-            }
-            else if(radioBtnAlbanian.isChecked)
-            {
-                language = "sq"
+
+            when {
+                radioBtnRussian.isChecked -> {
+                    language = "ru"
+                }
+                radioBtnAlbanian.isChecked -> {
+                    language = "sq"
+                }
+                radioBtnHungarian.isChecked -> {
+                    language = "hu"
+                }
             }
 
             with(sharedPref.edit()) {
@@ -73,6 +72,7 @@ class SettingsFragment : Fragment() {
         val displayMetricsToSet = usedResource.displayMetrics
 
         configurationToSet.setLocale(Locale(languageToSet))
+        @Suppress("DEPRECATION")
         usedResource.updateConfiguration(configurationToSet, displayMetricsToSet)
         val currentUpdater = Intent(context, MainActivity::class.java)
         startActivity(currentUpdater)

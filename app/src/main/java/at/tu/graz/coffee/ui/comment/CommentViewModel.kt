@@ -1,11 +1,10 @@
 package at.tu.graz.coffee.ui.comment
 
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
-import at.tu.graz.coffee.controller.CoffeeRepository
+import at.tu.graz.coffee.database.CoffeeRepository
 import at.tu.graz.coffee.model.CoffeeWithReviews
 import at.tu.graz.coffee.model.Review
 

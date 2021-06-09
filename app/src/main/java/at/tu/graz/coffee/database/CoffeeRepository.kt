@@ -1,4 +1,4 @@
-package at.tu.graz.coffee.controller
+package at.tu.graz.coffee.database
 
 import androidx.annotation.WorkerThread
 import at.tu.graz.coffee.model.Coffee

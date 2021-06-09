@@ -2,7 +2,7 @@ package at.tu.graz.coffee.ui.add_coffee
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import at.tu.graz.coffee.controller.CoffeeRepository
+import at.tu.graz.coffee.database.CoffeeRepository
 import at.tu.graz.coffee.model.Coffee
 
 class AddCoffeeViewModel(private val repository: CoffeeRepository) : ViewModel() {

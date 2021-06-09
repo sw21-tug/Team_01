@@ -130,7 +130,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
-                android:text="@string/filter_btn" />
+                android:text="@string/filter_btn"
+                android:background="@color/normal_gray"
+                android:textColor="@color/black"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

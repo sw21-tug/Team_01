@@ -1,4 +1,4 @@
-package at.tu.graz.coffee.controller
+package at.tu.graz.coffee.database
 
 import android.content.Context
 import androidx.room.Database
@@ -7,7 +7,6 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import at.tu.graz.coffee.model.Coffee
 import at.tu.graz.coffee.model.CoffeeType
-import at.tu.graz.coffee.model.CoffeeWithReviews
 import at.tu.graz.coffee.model.Review
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,11 +20,22 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         var TEST_MODE = false
-        private val databaseName = "coffeeDatabase"
+        private const val databaseName = "coffeeDatabase"
 
         private var db: AppDatabase? = null
         private var dbInstanceCoffee: CoffeeDAO? = null
         private var dbInstanceReview: ReviewDAO? = null
+
+        fun getDb(): AppDatabase? {
+            return db
+        }
+
+        fun closeDb() {
+            db?.close()
+            db = null
+            dbInstanceCoffee = null
+            dbInstanceReview = null
+        }
 
         fun getCoffeeInstance(context: Context, scope: CoroutineScope): CoffeeDAO {
             if (dbInstanceCoffee == null || dbInstanceReview == null) {
@@ -88,7 +98,9 @@ abstract class AppDatabase : RoomDatabase() {
                 super.onCreate(dbSql)
                 db.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        createData(database!!.coffeeDAO(), database.reviewDAO())
+                        if (!TEST_MODE) {
+                            createData(database!!.coffeeDAO(), database.reviewDAO())
+                        }
                     }
                 }
             }

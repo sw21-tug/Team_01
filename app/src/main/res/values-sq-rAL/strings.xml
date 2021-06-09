@@ -1,26 +1,16 @@
 <resources>
     <string name="app_name">Coffee</string>
-    <string name="navigation_drawer_open">Hapni sirtarin e navigimit</string>
-    <string name="navigation_drawer_close">Mbylle sirtarin e navigimit</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Titulli i lundrimit</string>
     <string name="action_settings">Cilësimet</string>
-
     <string name="menu_home">Shtëpi</string>
     <string name="menu_addCoffee">Shtoni kafe</string>
     <string name="menu_search">Kërko</string>
     <string name="menu_support">Mbështetje</string>
-
     <string name="owner">Pronar</string>
     <string name="question">Me kë doni të kontaktoni?</string>
     <string name="message">Mesazhi juaj:</string>
     <string name="sendEmail">Dërgoni mesazh</string>
     <string name="emailConfirm">Emaili u dërgua me sukses!</string>
-
     <string name="details">Detajet</string>
-    <string name="price">%.2f €</string>
-    <string name="quantity">%.2f kg</string>
     <string name="availability">Disponueshmëria:</string>
     <string name="cost">Kostoja:</string>
     <string name="taste">Shija:</string>
@@ -35,17 +25,14 @@
     <string name="strength">Forcë:</string>
     <string name="additional_information">Informacion shtese:</string>
     <string name="reviews_btn">Shqyrtime</string>
-
     <string name="comment">Komentoj</string>
     <string name="comments">Komente </string>
     <string name="submit">Paraqit</string>
     <string name="comment_hint">Ju lutemi shkruani komentin tuaj këtu.</string>
     <string name="menu_filter">Filtri</string>
     <string name="menu_filter_search">Filtri &amp; Kërko</string>
-
     <string name="filter_btn">Filtroj</string>
     <string name="all_shops">Të gjitha Dyqanet</string>
-
     <string name="settings">Cilësimet</string>
     <string name="FirstLanguage">Anglisht</string>
     <string name="SecondLanguage">Rusisht</string>
@@ -54,7 +41,6 @@
     <string name="filter_result">Filtrimi i rezultatit</string>
     <string name="search">Kërko:</string>
     <string name="empty_list">Asnjë kafe nuk është gjetur.</string>
-
     <string name="tel_nr" >Telefon</string>
     <string name="tel_nrPO">0664 9246052</string>
     <string name="email">E-Mail adresa</string>
@@ -66,5 +52,12 @@
     <string name="Add_coffee">ngarkoni një kafe</string>
     <string name="mandatory_field">Kontributi i detyrueshëm mungon</string>
     <string name="coffee_added">Kafe shtuar</string>
+    <string name="hungarian">Hungarez</string>
+    <string name="quantity">%.2f kg</string>
+    <string name="comment_added">Komenti u shtua</string>
+    <string name="none">Asnjë</string>
+    <string name="arabica">Arabica</string>
+    <string name="robusta">Robusta</string>
+    <string name="mixed">Të përziera</string>
 
 </resources>

@@ -3,7 +3,6 @@ package at.tu.graz.coffee
 import android.content.Context
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -30,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        toolbar.setTitleTextColor(getColor(R.color.gray))
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
@@ -47,6 +48,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+
+        menu.getItem(0).setOnMenuItemClickListener {
+            changeToSettings()
+        }
+
         return true
     }
 
@@ -55,9 +61,10 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun changeToSettings(item: MenuItem) {
+    private fun changeToSettings(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         navController.navigate(R.id.nav_settings)
+        return true
     }
 
     private fun setLanguage() {

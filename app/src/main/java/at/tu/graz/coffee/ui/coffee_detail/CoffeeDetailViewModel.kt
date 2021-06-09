@@ -1,7 +1,7 @@
 package at.tu.graz.coffee.ui.coffee_detail
 
 import androidx.lifecycle.*
-import at.tu.graz.coffee.controller.CoffeeRepository
+import at.tu.graz.coffee.database.CoffeeRepository
 import at.tu.graz.coffee.model.*
 
 

@@ -1,12 +1,10 @@
 package at.tu.graz.coffee.ui.filter_result
 
 import androidx.lifecycle.*
-import at.tu.graz.coffee.controller.CoffeeRepository
+import at.tu.graz.coffee.database.CoffeeRepository
 import at.tu.graz.coffee.model.CoffeeWithReviews
 
 class FilterResultViewModel(private val repository: CoffeeRepository) : ViewModel() {
-
-    val allCoffees: LiveData<List<CoffeeWithReviews>> = repository.allCoffees.asLiveData()
 
     fun filterCoffees(ids: List<Int>): LiveData<List<CoffeeWithReviews>> {
         return repository.getCoffeesByIds(ids).asLiveData()

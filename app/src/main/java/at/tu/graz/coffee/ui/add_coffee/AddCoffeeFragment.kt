@@ -16,14 +16,12 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import at.tu.graz.coffee.CoffeeApplication
 import at.tu.graz.coffee.R
+import at.tu.graz.coffee.businessLogic.CoffeeTypeHelper.Companion.getCoffeeTypeStringList
+import at.tu.graz.coffee.businessLogic.CoffeeTypeHelper.Companion.getEnumTypeFromCoffeeTypeName
 import at.tu.graz.coffee.model.Coffee
-import at.tu.graz.coffee.model.CoffeeType
-import at.tu.graz.coffee.ui.filter_result.FilterResultViewModel
-import at.tu.graz.coffee.ui.filter_result.FilterResultViewModelFactory
 import kotlinx.android.synthetic.main.fragment_add_coffee.*
 import com.stfalcon.frescoimageviewer.ImageViewer
 import kotlinx.coroutines.GlobalScope
@@ -52,7 +50,7 @@ class AddCoffeeFragment : Fragment() {
         val adapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_spinner_item,
-            CoffeeType.values()
+            getCoffeeTypeStringList(requireContext())
         )
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
 
@@ -84,7 +82,7 @@ class AddCoffeeFragment : Fragment() {
                 missingField = true
                 button_addPicture.setBackgroundColor(Color.RED)
             } else {
-                button_addPicture.setBackgroundColor(resources.getColor(R.color.purple_500))
+                button_addPicture.setBackgroundColor(resources.getColor(R.color.purple_500, resources.newTheme()))
             }
 
             if (missingField) {
@@ -102,10 +100,11 @@ class AddCoffeeFragment : Fragment() {
             )
             phonePictures.addFlags(FLAG_GRANT_READ_URI_PERMISSION)
             phonePictures.addFlags(FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
+            @Suppress("DEPRECATION")
             startActivityForResult(phonePictures, pictureSelector)
         }
 
-        spinner_type?.adapter = adapter;
+        spinner_type?.adapter = adapter
 
         spinner_type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -122,11 +121,15 @@ class AddCoffeeFragment : Fragment() {
     }
 
     private fun addCoffee(view: View) {
+        val coffeeType = getEnumTypeFromCoffeeTypeName(requireContext(),
+            spinner_type.selectedItem as String
+        )
+
         val coffee = Coffee(
             coffee_name.text.toString(),
             coffee_price.text.toString().toDouble(),
             coffee_shop.text.toString(),
-            spinner_type.selectedItem as CoffeeType,
+            coffeeType,
             coffee_qty.text.toString().toDouble(),
             coffee_strength.values[0].toInt(),
             txt_additional_information.text.toString(),
@@ -144,6 +147,7 @@ class AddCoffeeFragment : Fragment() {
     }
 
     override fun onActivityResult(neededPart: Int, outcomePart: Int, info: Intent?) {
+        @Suppress("DEPRECATION")
         super.onActivityResult(neededPart, outcomePart, info)
 
         if (neededPart == pictureSelector) {
@@ -155,7 +159,7 @@ class AddCoffeeFragment : Fragment() {
                 val takeFlags: Int = FLAG_GRANT_READ_URI_PERMISSION
                 contentResolver.takePersistableUriPermission(uriPicture!!, takeFlags)
 
-                val uri: MutableList<Uri> = ArrayList<Uri>()
+                val uri: MutableList<Uri> = ArrayList()
                 uri.add(uriPicture!!)
 
                 imageView.setOnClickListener {

@@ -30,11 +30,9 @@ class CommentFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = "Comments"
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.comments)
 
-        val root = inflater.inflate(R.layout.fragment_comment, container, false)
-
-        return root
+        return inflater.inflate(R.layout.fragment_comment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,7 +43,7 @@ class CommentFragment : Fragment() {
         }
     }
 
-    fun setData(coffeeWithReviews: CoffeeWithReviews, view: View) {
+    private fun setData(coffeeWithReviews: CoffeeWithReviews, view: View) {
         val coffeeName = view.findViewById<TextView>(R.id.comment_coffee_name)
         coffeeName.text = coffeeWithReviews.coffee.name
 
@@ -91,12 +89,12 @@ class CommentFragment : Fragment() {
             tasteSlider.setValues(0.0F)
             availabilitySlider.setValues(0.0F)
 
-            Toast.makeText(activity, "Comment added", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getString(R.string.comment_added), Toast.LENGTH_SHORT).show()
         }
     }
 
     // https://stackoverflow.com/questions/35115788/how-to-set-listview-height-depending-on-the-items-inside-scrollview/48027821
-    fun setListViewHeightBasedOnItems(listView: ListView): Boolean {
+    private fun setListViewHeightBasedOnItems(listView: ListView): Boolean {
         val listAdapter = listView.adapter
         return if (listAdapter != null) {
             val numberOfItems = listAdapter.count

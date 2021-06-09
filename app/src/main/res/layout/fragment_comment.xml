@@ -89,18 +89,16 @@
             android:id="@+id/btn_comment_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/submit" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:background="#E0E0E0" />
+            android:text="@string/submit"
+            android:textColor="@color/black"
+            android:paddingBottom="15dp"/>
 
         <ListView
             android:id="@+id/comment_listview"
             android:layout_width="match_parent"
             android:layout_height="4000dp"
-            android:dividerHeight="8dp" />
+            android:dividerHeight="8dp"
+            android:paddingTop="10dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>
