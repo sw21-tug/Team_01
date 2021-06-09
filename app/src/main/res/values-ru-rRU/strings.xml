@@ -61,4 +61,9 @@
     <string name="robusta">Робуста</string>
     <string name="mixed">Смешанный</string>
     <string name="brandlogo">логотипбренда</string>
+    <string name="homedivider">ДомашнийPазделитель</string>
+    <string name="name_of_coffee">Название_Kофе</string>
+    <string name="rating">Рейтинг</string>
+    <string name="homeimageview">Просмотрдомашнегоизображения</string>
+    <string name="burim_vrella_kotlin_com">burim.vrella@kotlin.com</string>
 </resources>
