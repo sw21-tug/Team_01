@@ -156,9 +156,15 @@ abstract class AppDatabase : RoomDatabase() {
                 )
             )
 
-            reviews.forEach { it.coffeeCreatorId = coffees[0].coffeeId }
+            var first = true
+            coffees.forEach { coffee ->
+                val id = coffeeDAO.insertCoffee(coffee)
 
-            coffees.forEach { coffeeDAO.insertCoffee(it) }
+                if (first) {
+                    first = false
+                    reviews.forEach {review -> review.coffeeCreatorId = id.toInt() }
+                }
+            }
             reviewDAO.insertAll(reviews)
         }
     }
