@@ -12,7 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/golden"
-        />
+        android:contentDescription="@string/homedivider" />
 
     <TextView
         android:id="@+id/home_textView_name"
@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="Name_of_Coffee"
+        android:text="@string/name_of_coffee"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         />
 
@@ -31,7 +31,7 @@
         android:id="@+id/home_textView_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rating"
+        android:text="@string/rating"
         app:layout_constraintEnd_toEndOf="@+id/home_ratingBar"
         app:layout_constraintTop_toBottomOf="@+id/home_ratingBar" />
 
@@ -44,7 +44,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_textView_name"
         app:srcCompat="@drawable/spar_premium_caffe_crema"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/homeimageview" />
 
     <RatingBar
         android:id="@+id/home_ratingBar"
