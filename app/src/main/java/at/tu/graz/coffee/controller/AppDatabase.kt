@@ -95,21 +95,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         fun createData(coffeeDAO: CoffeeDAO, reviewDAO: ReviewDAO) {
-            /*val reviews: List<Review> = listOf(
-                Review(1, 2, 10, "Just a comment", 1),
-                Review(10, 3, 4, "Another comment", 1),
-                Review(6, 5, 5, "1", 1),
-                Review(1, 1, 1, "2", 1),
-                Review(6, 6, 2, "3", 1),
-                Review(1, 7, 5, "4", 1),
-                Review(3, 4, 7, "5", 1)
-            )
-            val reviews_rand: List<Review> = listOf(
-                    Review(Random.nextInt(1, 10), Random.nextInt(1, 10), Random.nextInt(1, 10),
-                            "Just a comment", Random.nextInt(1, 10)),
-                    Review(Random.nextInt(1, 10), Random.nextInt(1, 10), Random.nextInt(1, 10),
-                            "Another comment", Random.nextInt(1, 10))
-            )*/
             val coffees: List<Coffee> = listOf(
                 Coffee(
                     "Caffe Crema", 9.00, "Supermarket",
