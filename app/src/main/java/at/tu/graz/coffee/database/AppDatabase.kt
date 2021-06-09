@@ -11,6 +11,7 @@ import at.tu.graz.coffee.model.Review
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 @Database(entities = [Coffee::class, Review::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
@@ -106,15 +107,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         fun createData(coffeeDAO: CoffeeDAO, reviewDAO: ReviewDAO) {
-            val reviews: List<Review> = listOf(
-                Review(1, 2, 10, "Just a comment", 1),
-                Review(10, 3, 4, "Another comment", 1),
-                Review(6, 5, 5, "1", 1),
-                Review(1, 1, 1, "2", 1),
-                Review(6, 6, 2, "3", 1),
-                Review(1, 7, 5, "4", 1),
-                Review(3, 4, 7, "5", 1)
-            )
             val coffees: List<Coffee> = listOf(
                 Coffee(
                     "Caffe Crema", 9.00, "Supermarket",
@@ -168,10 +160,18 @@ abstract class AppDatabase : RoomDatabase() {
                 )
             )
 
-            reviews.forEach { it.coffeeCreatorId = coffees[0].coffeeId }
+            coffees.forEach { coffee ->
+                val id = coffeeDAO.insertCoffee(coffee)
 
-            coffees.forEach { coffeeDAO.insertCoffee(it) }
-            reviewDAO.insertAll(reviews)
+                val reviews: List<Review> = listOf(
+                        Review(Random.nextInt(1, 10), Random.nextInt(1, 10), Random.nextInt(1, 10),
+                                "Just a comment", Random.nextInt(1, 10)),
+                        Review(Random.nextInt(1, 10), Random.nextInt(1, 10), Random.nextInt(1, 10),
+                                "Another comment", Random.nextInt(1, 10))
+                )
+                reviews.forEach {review -> review.coffeeCreatorId = id.toInt() }
+                reviewDAO.insertAll(reviews)
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.tu.graz.coffee.CoffeeApplication
 import at.tu.graz.coffee.R
+import at.tu.graz.coffee.businessLogic.SortHelper
 
 
 class HomeFragment : Fragment() {
@@ -31,9 +32,10 @@ class HomeFragment : Fragment() {
         listView.layoutManager = LinearLayoutManager(requireContext())
 
         homeViewModel.allCoffees.observe(requireActivity()) { coffees ->
-            coffees.let { adapter.submitList(it) }
+            coffees.forEach { it.calculateNewEvaluation() }
+            val sortedCoffees = SortHelper.sortCoffee(coffees)
+            sortedCoffees.let { adapter.submitList(it) }
         }
-
         return root
     }
 }

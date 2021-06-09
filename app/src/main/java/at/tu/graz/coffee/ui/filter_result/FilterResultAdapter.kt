@@ -25,7 +25,6 @@ class FilterResultAdapter :
 
     override fun onBindViewHolder(holder: FilterResultViewHolder, position: Int) {
         val current = getItem(position)
-        current.calculateNewEvaluation()
         holder.bind(current.coffee)
     }
 
