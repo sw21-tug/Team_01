@@ -3,12 +3,10 @@ package at.tu.graz.coffee
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.scrollTo
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
@@ -110,35 +108,6 @@ class ChangeToRussianTest {
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
         Thread.sleep(5000)
 
-        val recyclerView = onView(
-            allOf(
-                withId(R.id.home_listview),
-                childAtPosition(
-                    withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
-                    0
-                )
-            )
-        )
-        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
-
-        val materialButton2 = onView(
-            allOf(
-                withId(R.id.btn_comments), withText("Комментарии"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.ScrollView")),
-                        0
-                    ),
-                    3
-                )
-            )
-        )
-        materialButton2.perform(scrollTo(), click())
-
-        pressBack()
-
-        pressBack()
-
         val appCompatImageButton = onView(
             allOf(
                 withContentDescription("Открыть панель навигации"),
@@ -157,7 +126,59 @@ class ChangeToRussianTest {
         )
         appCompatImageButton.perform(click())
 
+        val checkedTextView = onView(
+            allOf(
+                withId(R.id.design_menu_item_text), withText("Служба поддержки"),
+                withParent(
+                    allOf(
+                        withId(R.id.nav_support),
+                        withParent(withId(R.id.design_navigation_view))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        checkedTextView.check(matches(isDisplayed()))
+
         pressBack()
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        Thread.sleep(5000)
+
+        val materialRadioButton2 = onView(
+            allOf(
+                withId(R.id.radio_btn_english), withText("English"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.radio_group_language),
+                        childAtPosition(
+                            withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
+                            0
+                        )
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        materialRadioButton2.perform(click())
+
+        val materialButton2 = onView(
+            allOf(
+                withId(R.id.settings_apply_button), withText("Apply"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.nav_host_fragment),
+                        0
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
+        materialButton2.perform(click())
     }
 
     private fun childAtPosition(
