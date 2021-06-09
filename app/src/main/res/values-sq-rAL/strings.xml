@@ -64,5 +64,6 @@
     <string name="name_of_coffee">Emri_i_kafesë</string>
     <string name="rating">Vlerësimi</string>
     <string name="homeimageview">PamjeEImazhitNëShtëpi</string>
+    <string name="burim_vrella_kotlin_com">burim.vrella@kotlin.com</string>
 
 </resources>
