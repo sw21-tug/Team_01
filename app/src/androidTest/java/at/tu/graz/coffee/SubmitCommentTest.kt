@@ -30,42 +30,6 @@ class SubmitCommentTest {
 
     @Test
     fun submitCommentTest() {
-        val appCompatImageButton = onView(
-            allOf(
-                withContentDescription("Open navigation drawer"),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.toolbar),
-                        childAtPosition(
-                            withClassName(`is`("com.google.android.material.appbar.AppBarLayout")),
-                            0
-                        )
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatImageButton.perform(click())
-
-        val navigationMenuItemView = onView(
-            allOf(
-                withId(R.id.nav_home),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.design_navigation_view),
-                        childAtPosition(
-                            withId(R.id.nav_view),
-                            0
-                        )
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        navigationMenuItemView.perform(click())
-
         val recyclerView = onView(
             allOf(
                 withId(R.id.home_listview),
@@ -75,7 +39,7 @@ class SubmitCommentTest {
                 )
             )
         )
-        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
+        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(1, click()))
 
         val materialButton = onView(
             allOf(
@@ -104,7 +68,7 @@ class SubmitCommentTest {
                 isDisplayed()
             )
         )
-        textInputEditText.perform(replaceText("Ok"), closeSoftKeyboard())
+        textInputEditText.perform(replaceText("Good"), closeSoftKeyboard())
 
         val materialButton2 = onView(
             allOf(
